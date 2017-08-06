@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import math
 
 #column headers for the dataset
@@ -12,14 +11,19 @@ users = pd.read_csv('ml-100k/u.user', sep='|', names=user_cols, encoding='latin-
 item = pd.read_csv('ml-100k/u.item', sep='|', names=item_cols, encoding='latin-1')
 data = pd.read_csv('ml-100k/u.data', sep='\t', names=data_cols, encoding='latin-1')
 
+#Separando dataset para treino e para teste.
 utrain = (data.sort_values('user id'))[:99832]
-print(utrain.tail())
+# print(utrain.tail())
 utest = (data.sort_values('user id'))[99833:]
-print(utest.head())
+# print(utest)
 
+#Transformando dataset em matriz para facilitar manipulação
 utrain = utrain.as_matrix(columns = ['user id', 'movie id', 'rating'])
+# print(utrain)
 utest = utest.as_matrix(columns = ['user id', 'movie id', 'rating'])
+# print(utest)
 
+#Para cada usuário, é iniciado um vetor de suas classificações.
 users_list = []
 for i in range(1,943):
     list = []
@@ -31,6 +35,9 @@ for i in range(1,943):
     utrain = utrain[j:]
     users_list.append(list)
 
+#A função EucledianScore calcula a similaridade entre dois usuários
+#Quanto mais em comum, mais próximo de 0 o valor de sum
+#Se os usuários tiverem menos de 4 filmes em comum, sum será muito alto(1000000).
 def EucledianScore(train_user, test_user):
     sum = 0
     count = 0
@@ -45,10 +52,12 @@ def EucledianScore(train_user, test_user):
         sum = 1000000
     return(math.sqrt(sum))
 
+#Calcula-se então os Eucledians Score de todos os usuários em relação ao usuário de teste.
 score_list = []
 for i in range(0,942):
     score_list.append([i+1,EucledianScore(users_list[i], utest)])
 
+#Aqui descobre-se qual usuário é mais similar ao usuário de teste.
 score = pd.DataFrame(score_list, columns = ['user id','Eucledian Score'])
 score = score.sort_values(by = 'Eucledian Score')
 print(score)
@@ -67,7 +76,8 @@ common_list = set(common_list)
 full_list = set(full_list)
 recommendation = full_list.difference(common_list)
 
-item_list = (((pd.merge(item,data).sort_values(by = 'movie id')).groupby('movie title')))['movie id', 'movie title', 'rating']
+item_list = (((pd.merge(item,data).sort_values(by =
+                'movie id')).groupby('movie title')))['movie id', 'movie title', 'rating']
 item_list = item_list.mean()
 item_list['movie title'] = item_list.index
 item_list = item_list.as_matrix()
