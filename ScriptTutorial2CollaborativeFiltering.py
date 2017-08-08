@@ -63,6 +63,9 @@ score = score.sort_values(by = 'Eucledian Score')
 print(score)
 score_matrix = score.as_matrix()
 
+#Aqui pega o usuário mais similar e o usuário de teste, compara para ver quais filmes eles têm em
+#comum. Descarta-se então esses filmes e recomenda-se apenas os filmes que o usuário similar
+#viu e que o usuário de teste não viu.
 user= int(score_matrix[0][0])
 common_list = []
 full_list = []
@@ -76,6 +79,7 @@ common_list = set(common_list)
 full_list = set(full_list)
 recommendation = full_list.difference(common_list)
 
+#Para finalizar, organiza-se a saída do programa para mostrar os filmes que foram recomendados.
 item_list = (((pd.merge(item,data).sort_values(by =
                 'movie id')).groupby('movie title')))['movie id', 'movie title', 'rating']
 item_list = item_list.mean()

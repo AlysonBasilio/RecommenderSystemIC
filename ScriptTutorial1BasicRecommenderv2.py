@@ -18,9 +18,9 @@ names=user_cols, encoding='latin-1')
 item = pd.read_csv('ml-100k/u.item', sep='|',
 names=item_cols, encoding='latin-1')
 
-data1 = pd.read_csv('ml-100k/u3.base', sep='\t',
+data1 = pd.read_csv('ml-100k/u5.base', sep='\t',
 names=data_cols, encoding='latin-1')
-testdata1 = pd.read_csv('ml-100k/u3.test', sep='\t',
+testdata1 = pd.read_csv('ml-100k/u5.test', sep='\t',
 names=data_cols, encoding='latin-1')
 
 #Create one data frame from the three
@@ -52,7 +52,7 @@ print(final.head())
 
 # print(final1.describe())
 
-#Organize by mean rate the 300 more rated movies
+#Organize by mean rate the 500 more rated movies
 final1 = final[:500].sort_values(by = 'rating', ascending = False)
 print(final1.head())
 
