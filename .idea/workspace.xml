@@ -4,7 +4,9 @@
     <list default="true" id="66ddde5e-e6b6-4ec4-bf86-9d1f65d1720d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ScriptTutorial1BasicRecommenderv2.py" afterPath="$PROJECT_DIR$/ScriptTutorial1BasicRecommenderv2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ScriptTutorial2CollaborativeFiltering.py" afterPath="$PROJECT_DIR$/ScriptTutorial2CollaborativeFiltering.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2.py" afterPath="$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv3.py" afterPath="$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv3.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ScriptTutorial2Hybridv1.py" afterPath="$PROJECT_DIR$/ScriptTutorial2Hybridv1.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,37 +15,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="RecommenderSystemIC" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ScriptTutorial2Hybridv1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ScriptTutorial2Hybridv1.py">
+      <file leaf-file-name="UserBasedCollaborative.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/UserBasedCollaborative.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScriptTutorial2CollaborativeFilteringv2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScriptTutorial2CollaborativeFilteringv3.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+            <state relative-caret-position="59">
+              <caret line="73" column="2" lean-forward="false" selection-start-line="73" selection-start-column="2" selection-end-line="73" selection-end-column="2" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -63,6 +44,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>887431973</find>
+      <find>0</find>
+      <find>= 0</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -75,11 +58,12 @@
         <option value="$PROJECT_DIR$/ScriptTutorial1BasicRecommender.py" />
         <option value="$PROJECT_DIR$/ScriptTutorial2CollaborativeFiltering.py" />
         <option value="$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2pt2.py" />
-        <option value="$PROJECT_DIR$/ScriptTutorial1BasicRecommenderv2.py" />
         <option value="$PROJECT_DIR$/ScriptTutorial2CollabborativeFilteringv3.py" />
+        <option value="$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2.py" />
         <option value="$PROJECT_DIR$/ScriptTutorial2Hybridv1.py" />
         <option value="$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv3.py" />
-        <option value="$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2.py" />
+        <option value="$PROJECT_DIR$/ScriptTutorial1BasicRecommenderv2.py" />
+        <option value="$PROJECT_DIR$/UserBasedCollaborative.py" />
       </list>
     </option>
   </component>
@@ -116,6 +100,11 @@
               <item name="RecommenderSystemIC" type="b2602c69:ProjectViewProjectNode" />
               <item name="RecommenderSystemIC" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="RecommenderSystemIC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RecommenderSystemIC" type="462c0819:PsiDirectoryNode" />
+              <item name="ml-100k" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -134,7 +123,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ScriptTutorial2CollaborativeFilteringv3">
+  <component name="RunManager" selected="Python.UserBasedCollaborative">
     <configuration name="ScriptTutorial1BasicRecommenderv2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -165,23 +154,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RecommenderSystemIC" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="ScriptTutorial2CollaborativeFilteringv2pt2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RecommenderSystemIC" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2pt2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -220,20 +192,37 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="UserBasedCollaborative" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RecommenderSystemIC" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UserBasedCollaborative.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.ScriptTutorial1BasicRecommenderv2" />
-      <item index="1" class="java.lang.String" itemvalue="Python.ScriptTutorial2CollaborativeFilteringv2" />
-      <item index="2" class="java.lang.String" itemvalue="Python.ScriptTutorial2CollaborativeFilteringv2pt2" />
-      <item index="3" class="java.lang.String" itemvalue="Python.ScriptTutorial2Hybridv1" />
-      <item index="4" class="java.lang.String" itemvalue="Python.ScriptTutorial2CollaborativeFilteringv3" />
+      <item index="0" class="java.lang.String" itemvalue="Python.ScriptTutorial2CollaborativeFilteringv2" />
+      <item index="1" class="java.lang.String" itemvalue="Python.ScriptTutorial2Hybridv1" />
+      <item index="2" class="java.lang.String" itemvalue="Python.ScriptTutorial2CollaborativeFilteringv3" />
+      <item index="3" class="java.lang.String" itemvalue="Python.UserBasedCollaborative" />
+      <item index="4" class="java.lang.String" itemvalue="Python.ScriptTutorial1BasicRecommenderv2" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.ScriptTutorial2CollaborativeFilteringv2" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ScriptTutorial2CollaborativeFilteringv3" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ScriptTutorial2Hybridv1" />
-        <item index="3" class="java.lang.String" itemvalue="Python.ScriptTutorial2CollaborativeFilteringv2pt2" />
-        <item index="4" class="java.lang.String" itemvalue="Python.ScriptTutorial1BasicRecommenderv2" />
+        <item index="0" class="java.lang.String" itemvalue="Python.UserBasedCollaborative" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ScriptTutorial1BasicRecommenderv2" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ScriptTutorial2CollaborativeFilteringv2" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ScriptTutorial2CollaborativeFilteringv3" />
+        <item index="4" class="java.lang.String" itemvalue="Python.ScriptTutorial2Hybridv1" />
       </list>
     </recent_temporary>
   </component>
@@ -252,24 +241,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="75" y="64" width="1301" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25896415" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26294822" sideWeight="0.48994976" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38102645" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882884" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38102645" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26294822" sideWeight="0.51005024" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -281,6 +271,36 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ScriptTutorial2Hybridv1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#19#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#19#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#19#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ScriptTutorial1BasicRecommenderv2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -293,7 +313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2178">
           <caret line="121" column="21" lean-forward="false" selection-start-line="121" selection-start-column="12" selection-end-line="121" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -310,7 +329,7 @@
         <state relative-caret-position="1368">
           <caret line="76" column="51" lean-forward="false" selection-start-line="76" selection-start-column="51" selection-end-line="76" selection-end-column="51" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -363,14 +382,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-680">
           <caret line="3152" column="8" lean-forward="false" selection-start-line="3152" selection-start-column="8" selection-end-line="3152" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ScriptTutorial1BasicRecommender.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="26" column="6" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="76" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -399,7 +410,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2178">
           <caret line="121" column="21" lean-forward="false" selection-start-line="121" selection-start-column="12" selection-end-line="121" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -417,43 +427,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ml-100k/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ScoresU1.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2pt2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="47" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ScoresU1.csv" />
+    <entry file="file://$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2pt2.py" />
     <entry file="file://$PROJECT_DIR$/ml-100k/u5.test">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-350924">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ml-100k/u1.test">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-359726">
-          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -461,42 +440,107 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-359726">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ScriptTutorial1BasicRecommenderv2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="65" column="26" lean-forward="true" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ScriptTutorial2Hybridv1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="162">
           <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+        <state relative-caret-position="72">
+          <caret line="4" column="31" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="143" selection-end-column="57" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ScriptTutorial2CollaborativeFilteringv3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+        <state relative-caret-position="1638">
+          <caret line="121" column="18" lean-forward="false" selection-start-line="121" selection-start-column="18" selection-end-line="121" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#19#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScriptTutorial1BasicRecommender.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-18">
+          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ml-100k/u1.test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-359740">
+          <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ml-100k/u2.test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-359740">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ml-100k/u3.test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357742">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScriptTutorial1BasicRecommenderv2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="73" column="32" lean-forward="false" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ml-100k/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2160">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="15" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/scipy/stats/stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="3020" column="0" lean-forward="false" selection-start-line="3020" selection-start-column="0" selection-end-line="3020" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UserBasedCollaborative.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="73" column="2" lean-forward="false" selection-start-line="73" selection-start-column="2" selection-end-line="73" selection-end-column="2" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

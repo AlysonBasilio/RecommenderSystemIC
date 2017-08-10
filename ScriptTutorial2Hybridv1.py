@@ -8,8 +8,8 @@ item_cols = ['movie id','movie title','release date','video release date','IMDb 
 user_cols = ['user id','age','gender','occupation','zip code']
 
 #importing the data files onto dataframes
-base = 'ml-100k/u3.base'
-test = 'ml-100k/u3.test'
+base = 'ml-100k/u4.base'
+test = 'ml-100k/u4.test'
 users = pd.read_csv('ml-100k/u.user', sep='|', names=user_cols, encoding='latin-1')
 item = pd.read_csv('ml-100k/u.item', sep='|', names=item_cols, encoding='latin-1')
 utrain = pd.read_csv(base, sep='\t', names=data_cols, encoding='latin-1')
