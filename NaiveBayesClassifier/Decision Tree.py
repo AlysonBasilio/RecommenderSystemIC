@@ -33,6 +33,45 @@ ratings_mean1 = (dataset1.groupby('movie title'))['movie title','rating'].mean()
 print("Mean Rate")
 print(ratings_mean1.head())
 
+class Node():
+    def __init__(self, atributo):
+        self.atributo = atributo
+        self.filhos = {}
+
+    def incluirFilhos(self,valor,node):
+        self.filhos[valor] =node
+
+def escolherAtributo(atributos, exemplos):
+    return None
+
+def getDecisionTree(exemplos, atributos, padrao):
+    tree = None
+    if len(exemplos)==0:
+        return padrao
+    else:
+        m = exemplos['ratings'][0]
+        b = True
+        for i in range(len(exemplos['ratings'])-1):
+            if m != exemplos['ratings'][i+1]:
+                b = False
+                break
+        if b:
+            return m
+        else:
+            if len(atributos)==0:
+                ratings_total = exemplos.groupby('ratings').size().sort_values(by='ratings', ascending=False)
+                return ratings_total['ratings'][0]
+            else:
+                melhor = escolherAtributo(atributos,exemplos)
+                tree = Node(melhor)
+                m = ratings_total = exemplos.groupby('ratings').size().sort_values(by='ratings', ascending=False)['ratings'][0]
+                for v in exemplos[melhor]:
+                    e = exemplos[exemplos[melhor]==v]
+                    sub_arvore = getDecisionTree(e,atributos-melhor,m)
+                    tree.incluirFilhos(vi,sub_arvore)
+
+    return tree
+
 # #modify the dataframes so that we can merge the two
 # ratings_total1 = pd.DataFrame({'movie title':ratings_total1.index,
 # 'total ratings': ratings_total1.values})
