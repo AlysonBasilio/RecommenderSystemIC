@@ -43,7 +43,7 @@ class Node():
         self.filhos[valor] =node
 
 def escolherAtributo(atributos, exemplos):
-    
+
     return None
 
 def getDecisionTree(exemplos, atributos, padrao):
