@@ -1,5 +1,6 @@
 import pandas as pd
 from math import log
+import time
 
 # column headers for the dataset
 ratings_cols = ['user id', 'movie id', 'rating', 'timestamp']
@@ -56,8 +57,8 @@ def getEntropia(exemplos):
 
 def escolherAtributo(atributos, exemplos):
     entropiaInicial = getEntropia(exemplos)
-    print("Entropia Inicial: ", entropiaInicial)
-    informacao = -1000
+    # print("Entropia Inicial: ", entropiaInicial)
+    informacao = 0
     atributoEscolhido = atributos[0]
     numElementos = len(exemplos)
     for atributo in atributos:
@@ -66,15 +67,20 @@ def escolherAtributo(atributos, exemplos):
         for elem in values:
             particao = exemplos[exemplos[atributo]==elem]
             entropia += (len(particao)/numElementos)*getEntropia(particao)
-        print("atributo: ", atributo, " entropia: ", entropia)
+        # print("atributo: ", atributo, " entropia: ", entropia)
         if (entropiaInicial-entropia) > informacao:
             informacao = entropiaInicial-entropia
             atributoEscolhido = atributo
-    return atributoEscolhido
+    if informacao == 0:
+        return None
+    else:
+        return atributoEscolhido
 
 def getDecisionTree(exemplos, atributos, padrao):
+    # print('Exemplos:', len(exemplos))
+    # print('Atributos:',atributos)
     tree = None
-    if len(exemplos) == 0:
+    if len(exemplos) < 1000:
         return padrao
     else:
         m = int(exemplos.iloc[0, 3])
@@ -92,59 +98,43 @@ def getDecisionTree(exemplos, atributos, padrao):
                 return m.index[0]
             else:
                 melhor = escolherAtributo(atributos, exemplos)
-                tree = Node(melhor)
-                m = (exemplos.groupby('rating'))['rating'].size()
-                m = m.sort_values(ascending=False)
-                m = m.index[0]
-                print('m = ', m)
-                for v in exemplos[melhor]:
-                    e = exemplos[exemplos[melhor] == v]
-                    sub_arvore = getDecisionTree(e, atributos - melhor, m)
-                    tree.incluirFilhos(v, sub_arvore)
+                if melhor is None:
+                    return padrao
+                else:
+                    tree = Node(melhor)
+                    m = (exemplos.groupby('rating'))['rating'].size()
+                    m = m.sort_values(ascending=False)
+                    m = m.index[0]
+                    # print('m = ', m)
+                    for v in list(exemplos[melhor].unique()):
+                        e = exemplos[exemplos[melhor] == v]
+                        # print("Num Exemplos:",len(e))
+                        i = atributos[:]
+                        del i[i.index(melhor)]
+                        sub_arvore = getDecisionTree(e, i, m)
+                        tree.incluirFilhos(v, sub_arvore)
     return tree
 
-
+print("Separando DataSets")
 dataset1.sample(frac=1).reset_index(drop=True)
 dataset_train = dataset1[:int(len(dataset1) * 2 / 3)]
 dataset_test = dataset1[int(len(dataset1) * 2 / 3):]
 
-print(escolherAtributo(['gender', 'age', 'occupation', 'genres'], dataset_train))
-# print(getDecisionTree(dataset_train, ['genres', 'age', 'gender', 'occupation'], 1))
+print("Construir Arvore")
+# print(escolherAtributo(['gender', 'age', 'occupation', 'genres'], dataset_train))
+inicio = time.time()
+t = getDecisionTree(dataset_train, ['genres', 'age', 'gender', 'occupation'], 1)
+fim = time.time()
+print("Tempo de Execução:",fim-inicio)
 
-# #modify the dataframes so that we can merge the two
-# ratings_total1 = pd.DataFrame({'movie title':ratings_total1.index,
-# 'total ratings': ratings_total1.values})
-# # print(ratings_total1.head())
-# ratings_mean1['movie title'] = ratings_mean1.index
-# # print(ratings_mean1.head())
-#
-# #final1 has rating, movie title and total ratings.
-# final = pd.merge(ratings_mean1, ratings_total1).sort_values(by = 'total ratings',
-# ascending= False)
-# print("Mean rate | Movie Title | Total ratings")
-# print(final.head())
-#
-# # print(final1.describe())
-#
-# #Organize by mean rate the 300 more rated movies
-# final1 = final[:300].sort_values(by = 'rating', ascending = False)
-# print(final1.head())
-#
-# #Now we want to test the Recommender System
-# #Let's recommend only movies with rate above 3.5
-# acertos=0
-# total = testdata1.size
-# for linha in testdata1.iterrows():
-#     r = 0
-#     movieID = linha[1][1]
-#     for linha1 in item.iterrows():
-#         if(movieID == linha1[1][0]):
-#             movieName = linha1[1][1]
-#             break
-#     for i in final1.index:
-#         if final1['movie title'][i] == movieName:
-#             r = final1['rating'][i]
-#             break
-#     if r>=3.5:
-#         acertos = acertos+1
-# print("Percentual de Acerto: "+(acertos/total)*100+"%")
+def printDecisionTree(node):
+    print("Atributo:",node.atributo)
+    for f in node.filhos.keys():
+        print("Key:",f)
+        v = node.filhos[f]
+        if str(v.__class__.__name__)=='Node':
+            printDecisionTree(node.filhos[f])
+        else:
+            print("Value:", v)
+
+printDecisionTree(t)
