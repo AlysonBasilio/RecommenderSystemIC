@@ -6,6 +6,7 @@ import time
 ratings_cols = ['user id', 'movie id', 'rating', 'timestamp']
 movies_cols = ['movie id', 'movie title', 'genres']
 user_cols = ['user id', 'gender', 'age', 'occupation', 'zip code']
+personal_dataset_cols = ['movie id', 'genres', 'user id', 'rating', 'gender', 'age', 'occupation']
 
 # importing the data files onto dataframes
 users = pd.read_csv('ml-1m/users.dat', sep='::',
@@ -20,6 +21,9 @@ ratings = pd.read_csv('ml-1m/ratings.dat', sep='::',
                       names=ratings_cols, encoding='latin-1', engine='python')
 # print(ratings.head())
 
+personal_ratings = pd.read_csv('ml-1m/personal_rating.dat', sep='::',
+                               names=personal_dataset_cols, encoding='latin-1', engine='python')
+print(personal_ratings.head())
 # Create one data frame from the three
 dataset1 = pd.merge(pd.merge(movies[['movie id', 'genres']], ratings[['user id', 'movie id', 'rating']]),
                     users[['user id', 'gender', 'age', 'occupation']])
@@ -37,7 +41,7 @@ print("Mean Rate")
 print(ratings_mean1.head())
 
 
-class Node():
+class Node:
     def __init__(self, atributo):
         self.atributo = atributo
         self.filhos = {}
@@ -65,7 +69,7 @@ def escolherAtributo(atributos, exemplos):
         values = list(exemplos[atributo].unique())
         entropia = 0
         for elem in values:
-            particao = exemplos[exemplos[atributo]==elem]
+            particao = exemplos[exemplos[atributo] == elem]
             entropia += (len(particao)/numElementos)*getEntropia(particao)
         # print("atributo: ", atributo, " entropia: ", entropia)
         if (entropiaInicial-entropia) > informacao:
@@ -123,7 +127,7 @@ dataset_test = dataset1[int(len(dataset1) * 2 / 3):]
 print("Construir Arvore")
 # print(escolherAtributo(['gender', 'age', 'occupation', 'genres'], dataset_train))
 inicio = time.time()
-t = getDecisionTree(dataset_train, ['genres', 'age', 'gender', 'occupation'], 1)
+# t = getDecisionTree(dataset_train, ['genres', 'age', 'gender', 'occupation'], 1)
 fim = time.time()
 print("Tempo de Execução:",fim-inicio)
 
@@ -137,4 +141,49 @@ def printDecisionTree(node):
         else:
             print("Value:", v)
 
-printDecisionTree(t)
+def testaClassificadorPriori(data_set):
+    data_set = data_set[:1000]
+    total_amostras = len(data_set)
+    acertos = 0
+    eqm = 0
+    matrix = [[0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0]]
+    for movie in range(total_amostras):
+        rating = int(data_set.iloc[movie, 3])
+        id = data_set.iloc[movie, 0]
+        rating_priori = int(round(ratings_mean1[ratings_mean1['movie id'] == id].iloc[0, 1], 0))
+        matrix[rating - 1][rating_priori - 1] += 1
+        eqm += (rating - rating_priori)**2
+    # taxa de acertos
+    for i in range(len(matrix)):
+        acertos += matrix[i][i]
+    print("Taxa de acerto: ", acertos/total_amostras)
+    # matriz de confusão
+    print("Matriz de confusão: ")
+    print("   1   2   3   4   5 (predito)")
+    for linha in range(len(matrix)):
+        print((linha + 1), end=" ")
+        for coluna in matrix[linha]:
+            print(str(coluna).center(3), end=" ")
+        print()
+    # erro quadrático médio
+    print("Erro quadrático médio: ", eqm/total_amostras)
+    # estatística de kappa
+    po = acertos/total_amostras
+    pe = 0
+    for i in range(len(matrix)):
+        plinha = 0
+        pcoluna = 0
+        for j in range(len(matrix[i])):
+            plinha += matrix[i][j]/total_amostras
+            pcoluna += matrix[j][i]/total_amostras
+        pe += plinha*pcoluna
+    k = (po - pe)/(1 - pe)
+    print("Estatistica de kappa: ", k)
+
+
+testaClassificadorPriori(personal_ratings)
+# printDecisionTree(t)
