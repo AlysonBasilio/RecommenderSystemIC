@@ -35,7 +35,10 @@ print(ratings_total1.head())
 ratings_mean1 = (dataset1.groupby('movie id'))['movie id', 'rating'].mean()
 print("Mean Rate")
 print(ratings_mean1.head())
-
+# print(ratings_mean1.iloc[0,0])
+# print(ratings_mean1.iloc[0,1])
+# print(ratings_mean1.iloc[1,0])
+# print(ratings_mean1.iloc[1,1])
 
 class Node():
     def __init__(self, atributo):
@@ -80,7 +83,7 @@ def getDecisionTree(exemplos, atributos, padrao):
     # print('Exemplos:', len(exemplos))
     # print('Atributos:',atributos)
     tree = None
-    if len(exemplos) < 1000:
+    if len(exemplos) < 10000:
         return padrao
     else:
         m = int(exemplos.iloc[0, 3])
@@ -137,4 +140,32 @@ def printDecisionTree(node):
         else:
             print("Value:", v)
 
-printDecisionTree(t)
+# printDecisionTree(t)
+
+print("Realizando testes")
+print(dataset_test)
+acertos = 0
+for i in range(len(dataset_test)):
+    aux = {
+        "genres":dataset_test.iloc[i,1],
+        "age":dataset_test.iloc[i,5],
+        "gender":dataset_test.iloc[i,4],
+        "occupation":dataset_test.iloc[i,6]
+    }
+    # print(aux)
+    # Percorrer Arvore
+    x = t.filhos[aux[t.atributo]]
+    while str(x.__class__.__name__)=='Node':
+        # print(x.atributo)
+        # print(x.filhos)
+        if aux[x.atributo] in x.filhos:
+            x = x.filhos[aux[x.atributo]]
+        else:
+            print(dataset_test.iloc[i,0])
+            print(ratings_mean1.iloc[int(dataset_test.iloc[i,0])-1:int(dataset_test.iloc[i,0])+2,:])
+            x = int(ratings_mean1.iloc[int(dataset_test.iloc[i,0])+1,1])
+    #     Adicionar algo aqui para tratar caso aqui do argumento que não está presente!
+    if str(x) == str(dataset_test.iloc[i,3]):
+        acertos+=1
+
+print("Percentual de Acertos:",acertos/len(dataset_test))
