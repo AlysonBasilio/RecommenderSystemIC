@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from math import log
 import time
 
@@ -87,8 +88,13 @@ def getDecisionTree(exemplos, atributos, padrao):
     # print('Exemplos:', len(exemplos))
     # print('Atributos:',atributos)
     tree = None
-    if len(exemplos) < 10000:
+    if len(exemplos) == 0:
         return padrao
+    if len(exemplos) == 1:
+        # print(exemplos)
+        # print(exemplos.iloc[0,0])
+        # print(int(round(ratings_mean1[ratings_mean1['movie id'] == exemplos.iloc[0,0]].iloc[0, 1], 0)))
+        return int(round(ratings_mean1[ratings_mean1['movie id'] == exemplos.iloc[0,0]].iloc[0, 1], 0))
     else:
         m = int(exemplos.iloc[0, 3])
         b = True
@@ -124,13 +130,12 @@ def getDecisionTree(exemplos, atributos, padrao):
 
 print("Separando DataSets")
 dataset1.sample(frac=1).reset_index(drop=True)
-dataset_train = dataset1[:int(len(dataset1) * 2 / 3)]
-dataset_test = dataset1[int(len(dataset1) * 2 / 3):]
+dataset_train = dataset1[:]
 
 print("Construir Arvore")
 # print(escolherAtributo(['gender', 'age', 'occupation', 'genres'], dataset_train))
 inicio = time.time()
-# t = getDecisionTree(dataset_train, ['genres', 'age', 'gender', 'occupation'], 1)
+t = getDecisionTree(dataset_train, ['genres', 'age', 'gender', 'occupation'], 1)
 fim = time.time()
 print("Tempo de Execução:",fim-inicio)
 
@@ -147,32 +152,70 @@ def printDecisionTree(node):
 # printDecisionTree(t)
 
 print("Realizando testes")
-print(dataset_test)
+print(personal_ratings)
 acertos = 0
-for i in range(len(dataset_test)):
+matrix = [[0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0]]
+eqm = 0
+for i in range(len(personal_ratings)):
     aux = {
-        "genres":dataset_test.iloc[i,1],
-        "age":dataset_test.iloc[i,5],
-        "gender":dataset_test.iloc[i,4],
-        "occupation":dataset_test.iloc[i,6]
+        "genres":personal_ratings.iloc[i,1],
+        "age":personal_ratings.iloc[i,5],
+        "gender":personal_ratings.iloc[i,4],
+        "occupation":personal_ratings.iloc[i,6]
     }
     # print(aux)
     # Percorrer Arvore
-    x = t.filhos[aux[t.atributo]]
-    while str(x.__class__.__name__)=='Node':
-        # print(x.atributo)
-        # print(x.filhos)
-        if aux[x.atributo] in x.filhos:
-            x = x.filhos[aux[x.atributo]]
+    if aux[t.atributo] not in t.filhos:
+        x = int(ratings_mean1[ratings_mean1['movie id'] == personal_ratings.iloc[i, 0]].iloc[0, 1])
+    else:
+        x = t.filhos[aux[t.atributo]]
+        while str(x.__class__.__name__)=='Node':
+            # print(x.atributo)
+            # print(x.filhos)
+            if aux[x.atributo] in x.filhos:
+                x = x.filhos[aux[x.atributo]]
+            else:
+                print(personal_ratings.iloc[i,0])
+                x = int(ratings_mean1[ratings_mean1['movie id'] == personal_ratings.iloc[i,0]].iloc[0,1])
+                print(x)
+        #     Adicionar algo aqui para tratar caso aqui do argumento que não está presente!
+    print("Nota Prevista pro filme:",personal_ratings.iloc[i,0]," - ", str(x))
+    print("Nota Media do filme:", int(ratings_mean1[ratings_mean1['movie id'] == personal_ratings.iloc[i, 0]].iloc[0, 1]))
+    a = x-int(ratings_mean1[ratings_mean1['movie id'] == personal_ratings.iloc[i, 0]].iloc[0, 1])
+    if np.abs(a) > 1:
+        if a > 0:
+            x = x - 1
         else:
-            print(dataset_test.iloc[i,0])
-            print(ratings_mean1.iloc[int(dataset_test.iloc[i,0])-1:int(dataset_test.iloc[i,0])+2,:])
-            x = int(ratings_mean1.iloc[int(dataset_test.iloc[i,0])+1,1])
-    #     Adicionar algo aqui para tratar caso aqui do argumento que não está presente!
-    if str(x) == str(dataset_test.iloc[i,3]):
+            x = x + 1
+    matrix[int(personal_ratings.iloc[i,3]-1)][int(x)-1]+=1
+    eqm += (int(personal_ratings.iloc[i,3]) - int(x)) ** 2
+    if str(x) == str(personal_ratings.iloc[i,3]):
         acertos+=1
 
-print("Percentual de Acertos:",acertos/len(dataset_test))
+print("Percentual de Acertos:",acertos/len(personal_ratings))
+print("Matriz de confusão: ")
+print("   1   2   3   4   5 (predito)")
+for linha in range(len(matrix)):
+    print((linha + 1), end=" ")
+    for coluna in matrix[linha]:
+        print(str(coluna).center(3), end=" ")
+    print()
+print("Erro quadrático médio: ", eqm/len(personal_ratings))
+po = acertos/len(personal_ratings)
+pe = 0
+for i in range(len(matrix)):
+    plinha = 0
+    pcoluna = 0
+    for j in range(len(matrix[i])):
+        plinha += matrix[i][j]/len(personal_ratings)
+        pcoluna += matrix[j][i]/len(personal_ratings)
+    pe += plinha*pcoluna
+k = (po - pe)/(1 - pe)
+print("Estatistica de kappa: ", k)
 
 def testaClassificadorPriori(data_set):
     data_set = data_set[:1000]
@@ -216,6 +259,5 @@ def testaClassificadorPriori(data_set):
         pe += plinha*pcoluna
     k = (po - pe)/(1 - pe)
     print("Estatistica de kappa: ", k)
-
 
 testaClassificadorPriori(personal_ratings)
